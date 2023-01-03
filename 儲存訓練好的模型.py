@@ -1,11 +1,9 @@
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
 import io
 import requests
 
-url = 'https://raw.githubusercontent.com/uchpython12/Flask-ML/main/data/Iris.csv'
+url = 'https://raw.githubusercontent.com/uchpython12/tensorflow-ml-docker-flask/main/data/Iris.csv'
 s=requests.get(url).content
 df_data=pd.read_csv(io.StringIO(s.decode('utf-8')))
 df_data = df_data.drop(labels=['Id'],axis=1) # 移除Id

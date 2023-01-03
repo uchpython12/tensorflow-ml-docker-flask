@@ -1,20 +1,33 @@
 # -*- coding: UTF-8 -*-
 import numpy as np
 import model
-#
-from flask import Flask, request, jsonify
-# from flask_cors import CORS
+from flask import Flask, render_template, request, jsonify
+from flask_cors import CORS
 
 app = Flask(__name__)
-# CORS(app)
+CORS(app)
 
-@app.route('/')
+@app.route('/',methods=['POST','GET'])
 def index():
+    #  利用request取得使用者端傳來的方法為何
+    if request.method == 'POST':
+        #  利用request取得表單欄位值
+        sepalLengthCm=request.values['sepalLengthCm']
+        sepalWidthCm=request.values['sepalWidthCm']
+        petalLengthCm=request.values['petalLengthCm']
+        petalWidthCm=request.values['petalWidthCm']
 
-    input = np.array([[5.5, 2.4, 2.7, 1.]])
-    # result = ("hello")
-    result = model.predict(input)
-    return jsonify({'result': str(result)})
+        input = np.array([[float(sepalLengthCm),float(sepalWidthCm),float(petalLengthCm),float(petalWidthCm)]])
+        result = model.predict(input)
+
+        return render_template("index.html",input=input,result=result,
+                               sepalLengthCm=sepalLengthCm,
+                               sepalWidthCm=sepalWidthCm,
+                               petalLengthCm=petalLengthCm,
+                               petalWidthCm=petalWidthCm)
+
+    return render_template("index.html")
+
 
 @app.route('/predict', methods=['POST'])
 def postInput():
@@ -25,11 +38,9 @@ def postInput():
     x3=insertValues['petalLengthCm']
     x4=insertValues['petalWidthCm']
     input = np.array([[x1, x2, x3, x4]])
-    # result = ("hello")
     result = model.predict(input)
 
     return jsonify({'return': str(result)})
-
 
 if __name__ == '__main__':
 

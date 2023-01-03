@@ -6,8 +6,8 @@
 你可以在本機直接使用 git 指令 clone 此專案並執行。
 
 ```
-git clone https://github.com/uchpython12/Flask-ML
-cd https://github.com/uchpython12/Flask-ML
+git clone https://github.com/uchpython12/tensorflow-ml-docker-flask
+cd https://github.com/uchpython12/tensorflow-ml-docker-flask
 ```
 
 ### Installation

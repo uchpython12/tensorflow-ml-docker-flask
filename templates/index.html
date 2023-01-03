@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>鳶尾花朵API前後端串接Example</title>
+
+</head>
+{% block body %}
+<body>
+<form method='post' action={{url_for('index')}}>
+  <label>花萼長度(cm)</label><br>
+  <input type="text" id="sepalLengthCm"name="sepalLengthCm" value="{{sepalLengthCm}}"><br>
+  <label>花萼寬度(cm)</label><br>
+  <input type="text" id="sepalWidthCm" name="sepalWidthCm" value="{{sepalWidthCm}}"><br>
+  <label>花瓣長度(cm)</label><br>
+  <input type="text" id="petalLengthCm" name="petalLengthCm"value="{{petalLengthCm}}"><br>
+  <label>花瓣寬度(cm)</label><br>
+  <input type="text" id="petalWidthCm" name="petalWidthCm" value="{{petalWidthCm}}"><br><br>
+  <input type="submit" value="Submit" onclick="submit()"><br><br>
+
+  <p>輸入值:{{input}}<br><br>預測結果：{{result}} <br><br>
+    品種:Iris-setosa=0, Iris-versicolor=1, Iris-virginica=2
+    <span id="resultText"></span></p>
+
+  <script src="js/index.js"></script>
+</form>
+</body>
+{% endblock %}
+</html>
