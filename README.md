@@ -11,7 +11,9 @@ cd https://github.com/uchpython12/tensorflow-ml-docker-flask
 ```
 
 ### Docker Build Image
-Docker自動打包image 本地端安裝請跳至Installation, docker run過後可直接訪問 [localhost:3000](http://localhost:3000/).
+本地端安裝請跳至Installation
+Docker自動打包image
+docker run過後可直接訪問 [localhost:3000](http://localhost:3000/).
 
 ```
 docker build -t tensorflow-ml-docker-flask .
